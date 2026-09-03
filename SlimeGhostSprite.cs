@@ -59,7 +59,7 @@ public class SlimeGhostSprite
             position += new Vector2(1, 0);
             flipped = false;
         }
-    }            
+    }
 
     /// <summary>
     /// Draws the sprite using the supplied SpriteBatch
@@ -70,14 +70,14 @@ public class SlimeGhostSprite
     {
         SpriteEffects spriteEffects = (flipped) ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         spriteBatch.Draw(
-            texture, 
-            position, 
-            null, 
-            Color.White, 
-            .33f, 
-            new Vector2(64, 64), 
+            texture,
+            position,
+            null,
+            Color.White,
+            .33f,
+            new Vector2(64, 64),
             .5f,
-            spriteEffects, 
+            spriteEffects,
             0);
     }
 }
