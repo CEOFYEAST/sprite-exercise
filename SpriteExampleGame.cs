@@ -15,6 +15,8 @@ public class SpriteExampleGame : Game
 
     private BatSprite[] bats;
 
+    private SpriteFont bangers;
+
     public SpriteExampleGame()
     {
         _graphics = new GraphicsDeviceManager(this);
@@ -45,6 +47,8 @@ public class SpriteExampleGame : Game
         atlas = Content.Load<Texture2D>("colored_packed");
 
         foreach (var bat in bats) bat.LoadContent(Content);
+
+        bangers = Content.Load<SpriteFont>("bangers");
     }
 
     protected override void Update(GameTime gameTime)
@@ -62,12 +66,14 @@ public class SpriteExampleGame : Game
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
+        bangers.MeasureString("This is a string to measure");
 
         // TODO: Add your drawing code here
         _spriteBatch.Begin(SpriteSortMode.BackToFront);
         _spriteBatch.Draw(atlas, new Vector2(50, 50), new Rectangle((6 * 16), 16, 16, 16), Color.White);
         foreach (var bat in bats) bat.Draw(gameTime, _spriteBatch);
         _slimeGhost.Draw(gameTime, _spriteBatch);
+        _spriteBatch.DrawString(bangers, $"{gameTime.TotalGameTime:c}", new Vector2(2, 2), Color.Gold);
         _spriteBatch.End();
 
         base.Draw(gameTime);
