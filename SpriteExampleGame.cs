@@ -10,6 +10,7 @@ public class SpriteExampleGame : Game
     private SpriteBatch _spriteBatch;
 
     private SlimeGhostSprite _slimeGhost;
+    private Texture2D atlas;
 
     public SpriteExampleGame()
     {
@@ -32,6 +33,8 @@ public class SpriteExampleGame : Game
 
         // TODO: use this.Content to load your game content here
         _slimeGhost.LoadContent(Content);
+
+        atlas = Content.Load<Texture2D>("colored_packed");
     }
 
     protected override void Update(GameTime gameTime)
@@ -52,6 +55,7 @@ public class SpriteExampleGame : Game
         // TODO: Add your drawing code here
         _spriteBatch.Begin();
         _slimeGhost.Draw(gameTime, _spriteBatch);
+        _spriteBatch.Draw(atlas, new Vector2(50, 50), new Rectangle((6 * 16), 16, 16, 16), Color.White);
         _spriteBatch.End();
 
         base.Draw(gameTime);
